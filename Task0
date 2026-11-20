@@ -1,0 +1,93 @@
+# Task 0: Connect to the Target
+
+## 1. Objective
+
+The objective of Task 0 was to establish a successful network connection between my Kali Linux machine and the Solivant SOC Range virtual machine.
+
+This task helped me understand virtual machine networking, IP addressing, network connectivity testing, and basic web server verification. It also prepared the lab environment for performing further cybersecurity and OSINT activities.
+
+## 2. Lab Environment
+
+I used the following virtual machines:
+
+- **Attacker Machine:** Kali Linux
+- **Target Machine:** Solivant SOC Range
+- **Virtualization Software:** Oracle VirtualBox
+- **Network Configuration:** Bridged Adapter
+
+### IP Address Configuration
+
+| Machine | IP Address |
+|---|---|
+| Kali Linux | 192.168.0.108 |
+| Solivant Target | 192.168.0.109 |
+
+## 3. Procedure Followed
+
+### Step 1: Importing and Configuring the Target VM
+
+I imported the SolivantSOCRange.ova file into Oracle VirtualBox. After importing the virtual machine, I opened its network settings and changed the network adapter mode to Bridged Adapter.
+
+I also configured the Kali Linux virtual machine to use Bridged Adapter so that both machines could communicate over the same network.
+
+### Step 2: Identifying the IP Address
+
+I started both virtual machines and opened the Kali Linux terminal.
+
+I executed the following command to identify the IPv4 address of Kali Linux:
+
+`ip -4 addr`
+
+The command displayed the IP address of my Kali machine as **192.168.0.108**.
+
+I also noted the target machine's IP address from its login screen as **192.168.0.109**.
+
+### Step 3: Testing Network Connectivity
+
+To verify communication between the two virtual machines, I executed:
+
+`ping -c 4 192.168.0.109`
+
+The target machine successfully responded to all four ICMP echo requests.
+
+**Result:**
+- Packets transmitted: 4
+- Packets received: 4
+- Packet loss: 0%
+
+This confirmed that Kali Linux could successfully communicate with the Solivant target machine.
+
+### Step 4: Verifying Web Server Connectivity
+
+Next, I checked whether the target machine's web server was accessible using:
+
+`curl -I http://192.168.0.109/`
+
+The server returned the following response:
+
+`HTTP/1.1 200 OK`
+
+The response headers also revealed:
+
+- Web Server: nginx
+- Version: 1.18.0
+- Operating System: Ubuntu
+- Content Type: text/html
+
+This confirmed that the target's web server was running and responding to HTTP requests.
+
+## 4. Results and Observations
+
+The network connection between Kali Linux and the Solivant SOC Range VM was successfully established.
+
+The ping test showed 0% packet loss, and the curl command returned an HTTP 200 OK response. I also identified the web server software and its version from the HTTP response headers.
+
+## 5. Conclusion
+
+I successfully completed Task 0 by configuring both virtual machines to use Bridged Adapter networking and establishing communication between them.
+
+Through this practical exercise, I learned how to identify IP addresses, test network connectivity using the ping command, and verify web server availability using curl.
+
+This task provided the foundation required for the upcoming cybersecurity practical exercises, where I will perform reconnaissance and investigate the services exposed by the target environment.
+
+**Status: Task 0 – Connectivity Successfully Verified.**
